@@ -1,0 +1,45 @@
+version: "3.8"
+
+services:
+  mongo-client:
+    image: mongoclient/mongoclient:4.0.1
+    container_name: mongo-client
+    volumes:
+      - mongo-client:/data/db
+    ports:
+      - '2000:3000'
+
+  mongo:
+    image: mongo:5.0.2
+    container_name: mongo-db
+    # restart: unless-stopped
+    restart: always
+    volumes:
+      - mongo-data:/data/db
+     #- ./data/db:/data/db
+     #- ./data/dump:/dump
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: password
+    ports:
+      - '2001:27017'
+    # command: mongod --smallfiles --oplogSize 128 --replSet rs0 --storageEngine=mmapv1
+    # labels:
+    #   - "traefik.enable=false"
+
+  web-api:
+    build:
+      context: ./api
+    container_name: web-api
+    # command: npm start 
+    command: npm run dev-docker      
+    volumes:
+      - ./api:/app
+      - web-api-node_modules:/app/node_modules
+    ports:
+      - '2002:80'
+
+volumes:
+  web-api-node_modules:
+  mongo-data:
+  mongo-client:
