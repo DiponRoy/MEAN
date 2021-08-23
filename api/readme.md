@@ -3,6 +3,9 @@ https://www.geeksforgeeks.org/how-to-create-multiple-routes-in-the-same-express-
 https://www.toptal.com/express-js/nodejs-typescript-rest-api-pt-1
 https://www.toptal.com/express-js/nodejs-typescript-rest-api-pt-2
 
+manage .env
+https://medium.com/the-node-js-collection/making-your-node-js-work-everywhere-with-environment-variables-2da8cdf6e786
+
 
 api doc:
 https://www.section.io/engineering-education/documenting-node-js-rest-api-using-swagger/
@@ -42,6 +45,10 @@ https://hub.docker.com/_/mongo?tab=description
 
 
 libs:
+
+env
+npm install dotenv
+
 apidoc:
 swagger-jsdoc
 swagger-ui-express

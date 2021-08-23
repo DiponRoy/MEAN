@@ -5,6 +5,8 @@ import cors from 'cors';
 import swaggerUI from 'swagger-ui-express';
 import swaggerJsDoc from "swagger-jsdoc";
 
+import config from './config.js'
+
 import helloRoutes from './routes/hello.js'
 import authRoutes from './routes/auth.js'
 
@@ -12,8 +14,10 @@ import authRoutes from './routes/auth.js'
 const app = express();
 
 // Constants
-const host = '0.0.0.0';
-const port = 80;
+const host = config.server.host;
+const port = config.server.port;
+const env = config.environment
+
 const apiDocOptions = {
 	definition: {
 		openapi: "3.0.0",
@@ -40,4 +44,5 @@ app.use("/api/hello", helloRoutes)
 app.use("/api/auth", authRoutes)
 
 app.listen(port, host);
-console.log(`Running on http://${host}:${port}`);
+console.log(`Environment ${env}`);
+console.log(`App running on http://${host}:${port}`);
