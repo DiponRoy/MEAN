@@ -25,6 +25,9 @@ validation:
 joi: https://www.youtube.com/watch?v=F-1GD_F8jHg
 express validator: https://www.youtube.com/watch?v=WvwMAJU1bd4
 
+auth:
+https://stackabuse.com/authentication-and-authorization-with-jwts-in-express-js/
+
 mongo:
 https://www.youtube.com/watch?v=hP77Rua1E0c
 https://www.youtube.com/watch?v=DzyC8lqbjC8
@@ -37,12 +40,15 @@ https://www.cloudbees.com/blog/using-docker-compose-for-nodejs-development
 mongo:
 https://hub.docker.com/_/mongo?tab=description
 
+
 libs:
+apidoc:
 swagger-jsdoc
 swagger-ui-express
 
-cmds
-npm init -y
+validation:
+express-validator
 
-npm install package_name
-npm install package_name1 package_name2
+cmds
+npm install --save-dev basetag
+npm uninstall --save-dev basetag

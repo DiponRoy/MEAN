@@ -6,7 +6,7 @@ import swaggerUI from 'swagger-ui-express';
 import swaggerJsDoc from "swagger-jsdoc";
 
 import helloRoutes from './routes/hello.js'
-
+import authRoutes from './routes/auth.js'
 
 // App
 const app = express();
@@ -37,6 +37,7 @@ app.use(cors());
 
 app.use("/docs", swaggerUI.serve, swaggerUI.setup(swaggerJsDoc(apiDocOptions)));
 app.use("/api/hello", helloRoutes)
+app.use("/api/auth", authRoutes)
 
 app.listen(port, host);
 console.log(`Running on http://${host}:${port}`);

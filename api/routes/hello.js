@@ -1,14 +1,25 @@
 import express from 'express'
+import { authenticate, developer } from '../middlewares/all.js'
+
+
 
 const router = express.Router()
 
 
 router.get('/', (req, res) => {
-    res.send('Hello');
+    let message = req.query.msg;
+    if(!message) {
+        message = 'Hello'
+    }
+    res.send(message);
 });
 
-router.get('/:id', (req, res) => {
+router.get('/:id', (req, res, next) => {
     const id = req.params.id
+    if(!parseInt(id,10)){
+        return next();//skip this route if not a number
+     }
+
     res.json({id: id});
 });
 
@@ -49,6 +60,41 @@ router.delete('/:id', (req, res) => {
     const item = {id: id}
     res.json(item);
 });
+
+
+/*
+GET /auth
+with land request to 
+router.get('/:id', (req, res) => {
+
+so done https://stackoverflow.com/a/46128849/2948523
+*/
+router.get('/auth', (req, res) => {
+    let authorization = req.headers.authorization;
+    if(!authorization) {
+        authorization = null
+    }
+    res.json({authorization_header: authorization});
+});
+
+
+router.get('/user', authenticate, (req, res) => {
+    res.json({user: req.user});
+});
+
+router.get('/developer', developer, (req, res) => {
+    res.json({developer: req.developer});
+});
+
+// 
+
+
+
+
+
+
+
+
 
 export default router
 // module.exports = router;
