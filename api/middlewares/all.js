@@ -1,3 +1,5 @@
+import { validationResult  } from "express-validator";
+
 
 const authenticate_middleware = (req, res, next) => {
     const authHeader = req.headers.authorization;
@@ -34,6 +36,20 @@ const developer_middleware = (req, res, next) => {
     }
 };
 
+/*https://express-validator.github.io/docs/running-imperatively.html*/
+const validate_middleware = validations => {
+    return async (req, res, next) => {
+      await Promise.all(validations.map(validation => validation.run(req)));
+  
+      const errors = validationResult(req);
+      if (errors.isEmpty()) {
+        return next();
+      }
+  
+      res.status(400).json({ errors: errors.array() });
+    };
+  };
+
 /*https://dev.to/nedsoft/central-error-handling-in-express-3aej*/
 const error_middleware = (err, req, res, next) => {
     console.log(err)
@@ -45,7 +61,7 @@ const error_middleware = (err, req, res, next) => {
 /*http://expressjs.com/en/resources/middleware/response-time.html*/
 const responseTime_middleware = function (req, res, time) {
 	let display_time = `${time}ms`
-	console.log(`${req.method}\t${req.url}\t${res.statusCode}\t${display_time}`)
+	console.log(`${req.method}\t${req.originalUrl}\t${res.statusCode}\t${display_time}`)
 	res.setHeader("X-Response-Time", display_time)	
 };
 
@@ -53,4 +69,5 @@ export default authenticate_middleware;
 export let authenticate = authenticate_middleware;
 export let developer = developer_middleware;
 export let errorHandeler = error_middleware;
+export let validate = validate_middleware;
 export let responseTimeViewer = responseTime_middleware;

@@ -42,8 +42,12 @@ winston
 https://www.npmjs.com/package/winston
 
 validation:
-joi: https://www.youtube.com/watch?v=F-1GD_F8jHg
-express validator: https://www.youtube.com/watch?v=WvwMAJU1bd4
+express validator: 
+https://www.youtube.com/watch?v=WvwMAJU1bd4
+express validator middleware
+https://express-validator.github.io/docs/running-imperatively.html
+another option joi
+https://www.youtube.com/watch?v=F-1GD_F8jHg
 
 auth:
 https://stackabuse.com/authentication-and-authorization-with-jwts-in-express-js/
