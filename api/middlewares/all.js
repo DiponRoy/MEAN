@@ -34,6 +34,16 @@ const developer_middleware = (req, res, next) => {
     }
 };
 
+/*https://dev.to/nedsoft/central-error-handling-in-express-3aej*/
+const error_middleware = (err, req, res, next) => {
+    console.log(err)
+	return res.status(500).json({
+		message: "Internal server error"
+	});
+};
+
+
 export default authenticate_middleware;
 export let authenticate = authenticate_middleware;
 export let developer = developer_middleware;
+export let errorHandeler = error_middleware;

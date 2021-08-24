@@ -93,6 +93,20 @@ router.get('/developer', developer, (req, res) => {
 
 
 
+/*------------------------------------------------- Error --------------------------------------*/
+router.get('/error', (req, res, next) => {
+    throw new Error('Something bad happened');
+    
+    /*or use*/
+    // try {
+    //     throw new Error('Something bad happened');
+    // } catch (error) {
+    //     next(error)
+    // }
+});
+
+
+
 
 
 

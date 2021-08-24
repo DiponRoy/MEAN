@@ -3,7 +3,10 @@ https://www.geeksforgeeks.org/how-to-create-multiple-routes-in-the-same-express-
 https://www.toptal.com/express-js/nodejs-typescript-rest-api-pt-1
 https://www.toptal.com/express-js/nodejs-typescript-rest-api-pt-2
 
-manage .env
+
+Quick Start:
+
+.env:
 https://medium.com/the-node-js-collection/making-your-node-js-work-everywhere-with-environment-variables-2da8cdf6e786
 
 
@@ -20,9 +23,20 @@ https://developer.okta.com/blog/2018/11/15/node-express-typescript
 file structure:
 https://www.coreycleary.me/project-structure-for-an-express-rest-api-when-there-is-no-standard-way
 
-sample project
+sample project:
 https://github.com/MoathShraim/Nodejs-rest-api-project-structure-Express
 
+
+Error:
+Central Error Handling
+https://codeburst.io/better-error-handling-in-express-js-b118fc29e9c7
+https://scoutapm.com/blog/express-error-handling
+https://dev.to/nedsoft/central-error-handling-in-express-3aej
+https://expressjs.com/en/guide/error-handling.html
+
+logger:
+winston
+https://www.npmjs.com/package/winston
 
 validation:
 joi: https://www.youtube.com/watch?v=F-1GD_F8jHg
@@ -36,11 +50,11 @@ https://www.youtube.com/watch?v=hP77Rua1E0c
 https://www.youtube.com/watch?v=DzyC8lqbjC8
 
 docker:
-node:
+node
 https://nodejs.org/de/docs/guides/nodejs-docker-webapp/
 https://faun.pub/step-by-step-guide-to-dockerize-a-node-js-express-application-cb6be4159cf1
 https://www.cloudbees.com/blog/using-docker-compose-for-nodejs-development
-mongo:
+mongo
 https://hub.docker.com/_/mongo?tab=description
 
 

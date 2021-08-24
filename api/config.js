@@ -4,7 +4,12 @@ import { config } from "process";
 dotenv.config();
 
 const configs = {
-    environment: process.env.ENVIROMMENT,
+    env: {
+        current: process.env.ENV_CURRENT,
+        prod: process.env.ENV_PROD,
+        dev: process.env.ENV_DEV,
+    
+    },
     server: {
         port: process.env.PORT,
         host: process.env.HOST
