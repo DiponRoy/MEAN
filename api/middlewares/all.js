@@ -42,8 +42,15 @@ const error_middleware = (err, req, res, next) => {
 	});
 };
 
+/*http://expressjs.com/en/resources/middleware/response-time.html*/
+const responseTime_middleware = function (req, res, time) {
+	let display_time = `${time}ms`
+	console.log(`${req.method}\t${req.url}\t${res.statusCode}\t${display_time}`)
+	res.setHeader("X-Response-Time", display_time)	
+};
 
 export default authenticate_middleware;
 export let authenticate = authenticate_middleware;
 export let developer = developer_middleware;
 export let errorHandeler = error_middleware;
+export let responseTimeViewer = responseTime_middleware;

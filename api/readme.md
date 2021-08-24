@@ -27,6 +27,9 @@ sample project:
 https://github.com/MoathShraim/Nodejs-rest-api-project-structure-Express
 
 
+Response Time
+http://expressjs.com/en/resources/middleware/response-time.html
+
 Error:
 Central Error Handling
 https://codeburst.io/better-error-handling-in-express-js-b118fc29e9c7
@@ -62,6 +65,8 @@ libs:
 
 env
 npm install dotenv
+
+npm install response-time
 
 apidoc:
 swagger-jsdoc
