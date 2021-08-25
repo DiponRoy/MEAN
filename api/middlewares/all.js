@@ -1,4 +1,5 @@
 import { validationResult  } from "express-validator";
+import log from "../logger.js";
 
 
 const authenticate_middleware = (req, res, next) => {
@@ -53,8 +54,10 @@ const validate_middleware = validations => {
 /*https://dev.to/nedsoft/central-error-handling-in-express-3aej*/
 const error_middleware = (err, req, res, next) => {
     console.log(err)
+    const logId = log.error(err.stack, req.id)
 	return res.status(500).json({
-		message: "Internal server error"
+		message: "Internal server error",
+        errorLogId: logId
 	});
 };
 

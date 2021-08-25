@@ -30,6 +30,12 @@ https://github.com/MoathShraim/Nodejs-rest-api-project-structure-Express
 Response Time
 http://expressjs.com/en/resources/middleware/response-time.html
 
+unique id to header
+https://github.com/floatdrop/express-request-id
+
+GUID
+https://github.com/uuidjs/uuid
+
 Error:
 Central Error Handling
 https://codeburst.io/better-error-handling-in-express-js-b118fc29e9c7
@@ -39,7 +45,19 @@ https://expressjs.com/en/guide/error-handling.html
 
 logger:
 winston
+https://www.youtube.com/watch?v=m2q1Cevl_qw&t=569s
+https://www.section.io/engineering-education/logging-with-winston/
 https://www.npmjs.com/package/winston
+
+----------
+not working
+
+Access request object from any class
+https://www.npmjs.com/package/continuation-local-storage
+https://stackoverflow.com/a/48063327/2948523
+
+https://stackoverflow.com/questions/59433960/continuation-local-storage-loses-values-after-await-async-call
+----------
 
 validation:
 express validator: 
@@ -70,7 +88,26 @@ libs:
 env
 npm install dotenv
 
+request-id
+npm i express-request-id
+
+response-time
 npm install response-time
+
+logger
+npm install winston
+
+----------
+not working
+
+Access request object from any class
+npm i continuation-local-storage
+
+npm i cls-hooked
+----------
+
+GUID
+npm install uuid
 
 apidoc:
 swagger-jsdoc

@@ -5,7 +5,7 @@ import cors from 'cors';
 import swaggerUI from 'swagger-ui-express';
 import swaggerJsDoc from "swagger-jsdoc";
 import responseTime from 'response-time';
-
+import addRequestId from 'express-request-id';
 
 import config from './config.js'
 import helloRoutes from './routes/hello.js'
@@ -37,10 +37,17 @@ app.use(bodyParser.json({ limit: '30mb', extended: true }));
 app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }));
 app.use(cors());
 
-/*responseTime*/
+/*
+unique id to header
+https://github.com/floatdrop/express-request-id
+*/
+app.use(addRequestId());
+
+/*response time to header and console log*/
 app.use(responseTime(function (req, res, time) {
 	responseTimeViewer(req, res, time)
 }));
+
 
 // app.use((req, res, next) => {
 // 	console.log("before any call")
