@@ -32,6 +32,8 @@ const createLog = function(message, requestId) {
     };
 };
 
+
+
 var logger_helper = {
     // log: function(level, message) {
     //     winstonLogger.log(level, formatMessage(message));
@@ -61,3 +63,5 @@ var logger_helper = {
 }; 
 
 export default logger_helper
+export let serverLogger = logger_helper
+// export let auditLogger = auditlogger

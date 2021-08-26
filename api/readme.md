@@ -49,6 +49,10 @@ https://www.youtube.com/watch?v=m2q1Cevl_qw&t=569s
 https://www.section.io/engineering-education/logging-with-winston/
 https://www.npmjs.com/package/winston
 
+audit logger:
+https://github.com/PayU/express-request-logger
+https://github.com/trentm/node-bunyan
+
 ----------
 not working
 

@@ -6,11 +6,14 @@ import swaggerUI from 'swagger-ui-express';
 import swaggerJsDoc from "swagger-jsdoc";
 import responseTime from 'response-time';
 import addRequestId from 'express-request-id';
+import audit from 'express-requests-logger';
+import bunyan from 'bunyan';
 
 import config from './config.js'
 import helloRoutes from './routes/hello.js'
 import authRoutes from './routes/auth.js'
 import { errorHandeler, responseTimeViewer } from './middlewares/all.js'
+import { auditLogger } from './logger.js'
 
 
 // App
@@ -36,6 +39,44 @@ const apiDocOptions = {
 app.use(bodyParser.json({ limit: '30mb', extended: true }));
 app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }));
 app.use(cors());
+
+
+/*https://github.com/PayU/express-request-logger*/
+function reqSerializer(req) {
+    return {
+        id: req.id
+    };
+}
+const log = bunyan.createLogger({
+	name: 'audit log',
+	streams: [
+	  {
+		level: 'info',
+		path: './logs/audit.log'  // log ERROR and above to a file
+	  }
+	],
+	serializers: reqSerializer
+});
+
+/*https://github.com/PayU/express-request-logger*/
+app.use(audit({
+    logger: log, 							// Existing bunyan logger
+    excludeURLs: [], 						// Exclude paths which enclude 'health' & 'metrics'
+    request: {
+        maskBody: ["password"], 			// Mask 'password' field in incoming requests
+        excludeHeaders: ["authorization"],	// Exclude 'authorization' header from requests
+        excludeBody: ["creditCard"], 		// Exclude 'creditCard' field from requests body
+        maskHeaders: [], 					// Mask 'header1' header in incoming requests
+        // maxBodyLength: 50 				// limit length to 50 chars + '...'
+    },
+    response: {
+        maskBody: ["session_token"], 		// Mask 'session_token' field in response body
+        excludeHeaders: [], 				// Exclude all headers from responses,
+        excludeBody: [], 					// Exclude all body from responses
+        maskHeaders: [], 					// Mask 'header1' header in incoming requests
+        // maxBodyLength: 50 				// limit length to 50 chars + '...'
+    }
+}));
 
 /*
 unique id to header
