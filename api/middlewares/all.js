@@ -58,11 +58,11 @@ const validate_middleware = validations => {
 /*https://dev.to/nedsoft/central-error-handling-in-express-3aej*/
 const error_middleware = (err, req, res, next) => {
     console.log(err)
-    const logId = log.error(err.stack, req.id)
+    const logId = new log(req).error(err.stack)
+    res.setHeader("X-Error-Log-Id", logId)
 	return res.status(500).json({
-		message: "Internal server error",
-        errorLogId: logId
-	});
+		message: "Internal server error"
+    });
 };
 
 /*http://expressjs.com/en/resources/middleware/response-time.html*/

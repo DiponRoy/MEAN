@@ -33,49 +33,35 @@ const logConfiguration = {
 };
 const logger = winston.createLogger(logConfiguration);
 
-/*
-https://stackoverflow.com/questions/42432951/how-to-add-uuid-in-every-winston-log-node-js-per-request
-in header "X-Request-Id"
-but in request object id
-*/
-const requestIdHeader = "id";
-const createLog = function(message, requestId) {
-    return {
-        message: message,
-        id: uuidv4(),
-        requestId: requestId,
-    };
-};
 
 
+class Logger {
 
-var logger_helper = {
-    // log: function(level, message) {
-    //     winstonLogger.log(level, formatMessage(message));
-    // },
-    info: function(message, requestId) {
-        const log = createLog(message, requestId);
-        logger.info(log);
-        return log.id
-    },
-    error: function(message, requestId) {
-        const log = createLog(message, requestId);
-        logger.error(log);
-        return log.id
+    constructor(req) {
+        this.requestId = req ? req.id : undefined;
     }
-    // warn: function(message) {
-    //     winstonLogger.warn(formatMessage(message));
-    // },
-    // verbose: function(message) {
-    //     winstonLogger.verbose(formatMessage(message));
-    // },
-    // debug: function(message) {
-    //     winstonLogger.debug(formatMessage(message));
-    // },
-    // silly: function(message) {
-    //     winstonLogger.silly(formatMessage(message));
-    // }
-}; 
 
-export default logger_helper
-export let serverLogger = logger_helper
+    createLog(message) {
+        return {
+            message: message,
+            id: uuidv4(),
+            requestId: this.requestId,
+        };
+    }
+
+    info(message) {
+        const log = this.createLog(message);
+        logger.info(log);
+        return log.id;
+    }
+
+    error(message) {
+        const log = this. createLog(message);
+        logger.error(log);
+        return log.id;
+    }
+}
+
+
+export default Logger
+export let ServerLogger = Logger
