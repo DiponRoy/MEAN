@@ -59,7 +59,6 @@ not working
 Access request object from any class
 https://www.npmjs.com/package/continuation-local-storage
 https://stackoverflow.com/a/48063327/2948523
-
 https://stackoverflow.com/questions/59433960/continuation-local-storage-loses-values-after-await-async-call
 ----------
 
@@ -73,6 +72,10 @@ https://www.youtube.com/watch?v=F-1GD_F8jHg
 
 auth:
 https://stackabuse.com/authentication-and-authorization-with-jwts-in-express-js/
+
+
+list in query input:
+https://github.com/analog-nico/hpp
 
 mongo:
 https://www.youtube.com/watch?v=hP77Rua1E0c
@@ -101,14 +104,7 @@ npm install response-time
 logger
 npm install winston
 
-----------
-not working
-
-Access request object from any class
-npm i continuation-local-storage
-
-npm i cls-hooked
-----------
+npm install hpp
 
 GUID
 npm install uuid

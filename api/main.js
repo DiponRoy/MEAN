@@ -8,6 +8,7 @@ import responseTime from 'response-time';
 import addRequestId from 'express-request-id';
 import audit from 'express-requests-logger';
 import bunyan from 'bunyan';
+import hpp from 'hpp';
 
 import config from './config.js'
 import helloRoutes from './routes/hello.js'
@@ -36,8 +37,10 @@ app.use(bodyParser.json({ limit: '30mb', extended: true }));
 app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }));
 app.use(cors());
 
-
 /*request response audit log*/
+app.use(hpp({ checkBody: false }))
+
+/*object list in query*/
 // app.use(auditLogHandler());
 
 /*https://github.com/PayU/express-request-logger*/

@@ -8,10 +8,16 @@ const router = express.Router()
 
 router.get('/', (req, res) => {
     let message = req.query.msg;
+    let item = req.query.item;
+    let items = req.queryPolluted.item /*this will not be found in audit log*/
     if(!message) {
-        message = 'Hello'
+        message = 'Hello';
     }
-    res.send(message);
+    res.send({
+        message: message,
+        item: item,
+        items: items
+    });
 });
 
 router.get('/:id', (req, res, next) => {
