@@ -5,18 +5,24 @@ import { v4 as uuidv4 } from 'uuid';
 const logConfiguration = {
     transports: [
         // new winston.transports.Console(),
+
         new winston.transports.File({
             level: 'info',
-            filename: 'logs/server/info.log'    /*the log directory and file will be auto created if it does not exist*/
-        }),
-        new winston.transports.File({
-            level: 'warn',
-            filename: 'logs/server/warn.log'    /*the log directory and file will be auto created if it does not exist*/
-        }),
-        new winston.transports.File({
-            level: 'error',
-            filename: 'logs/server/error.log'    /*the log directory and file will be auto created if it does not exist*/
+            filename: 'logs/server/server.log'    /*the log directory and file will be auto created if it does not exist*/
         })
+
+        // new winston.transports.File({
+        //     level: 'info',
+        //     filename: 'logs/server/info.log'    /*the log directory and file will be auto created if it does not exist*/
+        // }),
+        // new winston.transports.File({
+        //     level: 'warn',
+        //     filename: 'logs/server/warn.log'    /*the log directory and file will be auto created if it does not exist*/
+        // }),
+        // new winston.transports.File({
+        //     level: 'error',
+        //     filename: 'logs/server/error.log'    /*the log directory and file will be auto created if it does not exist*/
+        // })
     ],   
     format: winston.format.combine(
         winston.format.timestamp({
