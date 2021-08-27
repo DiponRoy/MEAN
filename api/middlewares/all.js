@@ -1,5 +1,6 @@
 import { validationResult  } from "express-validator";
 import log from "../logger.js";
+import { addAuditLog } from "../loggers/auditLoger.js";
 
 
 const authenticate_middleware = (req, res, next) => {
@@ -14,9 +15,11 @@ const authenticate_middleware = (req, res, next) => {
 
         let user = {
             id: 1,
+            accountId:10,
             token: token
         }
         req.user = user;
+        addAuditLog(req, "user", user);
         next();
     } else {
         res.sendStatus(401);
@@ -31,6 +34,7 @@ const developer_middleware = (req, res, next) => {
             apiKey: authHeader
         }
         req.developer = developer;
+        addAuditLog(req, "developer", developer);
         next();
     } else {
         res.sendStatus(401);
@@ -63,9 +67,10 @@ const error_middleware = (err, req, res, next) => {
 
 /*http://expressjs.com/en/resources/middleware/response-time.html*/
 const responseTime_middleware = function (req, res, time) {
-	let display_time = `${time}ms`
+	let display_time = `${time.toFixed(2)}ms`
 	console.log(`${req.method}\t${req.originalUrl}\t${res.statusCode}\t${display_time}`)
 	res.setHeader("X-Response-Time", display_time)	
+    addAuditLog(req, "requestId", req.id);
 };
 
 export default authenticate_middleware;

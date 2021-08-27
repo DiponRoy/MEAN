@@ -64,4 +64,3 @@ var logger_helper = {
 
 export default logger_helper
 export let serverLogger = logger_helper
-// export let auditLogger = auditlogger

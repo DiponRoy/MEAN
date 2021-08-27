@@ -13,16 +13,12 @@ import config from './config.js'
 import helloRoutes from './routes/hello.js'
 import authRoutes from './routes/auth.js'
 import { errorHandeler, responseTimeViewer } from './middlewares/all.js'
-import { auditLogger } from './logger.js'
+// import { auditLogHandler } from "./loggers/auditLoger.js";
+
 
 
 // App
 const app = express();
-
-// Constants
-const host = config.server.host;
-const port = config.server.port;
-const env = config.env.current
 
 const apiDocOptions = {
 	definition: {
@@ -41,12 +37,10 @@ app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }));
 app.use(cors());
 
 
+/*request response audit log*/
+// app.use(auditLogHandler());
+
 /*https://github.com/PayU/express-request-logger*/
-function reqSerializer(req) {
-    return {
-        id: req.id
-    };
-}
 const log = bunyan.createLogger({
 	name: 'audit log',
 	streams: [
@@ -54,10 +48,8 @@ const log = bunyan.createLogger({
 		level: 'info',
 		path: './logs/audit.log'  // log ERROR and above to a file
 	  }
-	],
-	serializers: reqSerializer
+	]
 });
-
 /*https://github.com/PayU/express-request-logger*/
 app.use(audit({
     logger: log, 							// Existing bunyan logger
@@ -78,11 +70,13 @@ app.use(audit({
     }
 }));
 
+
 /*
 unique id to header
 https://github.com/floatdrop/express-request-id
 */
 app.use(addRequestId());
+
 
 /*response time to header and console log*/
 app.use(responseTime(function (req, res, time) {
@@ -112,5 +106,10 @@ app.use((err, req, res, next) => {
 // 	console.log("after any call")
 // });
 
+
+/*run application*/
+const host = config.server.host;
+const port = config.server.port;
+const env = config.env.current
 app.listen(port, host);
 console.log(`App running on http://${host}:${port} with ${env} environment settings`);
