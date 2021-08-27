@@ -49,7 +49,7 @@ const log = bunyan.createLogger({
 	streams: [
 	  {
 		level: 'info',
-		path: './logs/audit.log'  // log ERROR and above to a file
+		path: './logs/audit/audit.log'  // log ERROR and above to a file
 	  }
 	]
 });

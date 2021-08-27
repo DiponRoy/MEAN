@@ -6,7 +6,16 @@ const logConfiguration = {
     transports: [
         // new winston.transports.Console(),
         new winston.transports.File({
-            filename: 'logs/server.log'    /*the log directory and file will be auto created if it does not exist*/
+            level: 'info',
+            filename: 'logs/server/info.log'    /*the log directory and file will be auto created if it does not exist*/
+        }),
+        new winston.transports.File({
+            level: 'warn',
+            filename: 'logs/server/warn.log'    /*the log directory and file will be auto created if it does not exist*/
+        }),
+        new winston.transports.File({
+            level: 'error',
+            filename: 'logs/server/error.log'    /*the log directory and file will be auto created if it does not exist*/
         })
     ],   
     format: winston.format.combine(
