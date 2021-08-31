@@ -8,7 +8,7 @@ const logConfiguration = {
 
         new winston.transports.File({
             level: 'info',
-            filename: 'logs/server/server.log'    /*the log directory and file will be auto created if it does not exist*/
+            filename: 'server/logs/server/server.log'    /*the log directory and file will be auto created if it does not exist*/
         })
 
         // new winston.transports.File({
@@ -32,7 +32,6 @@ const logConfiguration = {
     )
 };
 const logger = winston.createLogger(logConfiguration);
-
 
 
 class Logger {

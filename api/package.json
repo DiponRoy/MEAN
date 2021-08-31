@@ -4,7 +4,7 @@
     "description": "Node.js on Docker",
     "author": "First Last <first.last@example.com>",
     "type": "module",
-    "main": "main.js",
+    "main": "./server/main.js",
     "scripts": {
         "hello": "echo \"Hello\" && exit 1",
         "debug": "ndb main.js",
@@ -13,6 +13,7 @@
         "dev-docker": "nodemon --legacy-watch main.js"
     },
     "dependencies": {
+        "babel-plugin-resolver": "^1.1.0",
         "body-parser": "^1.19.0",
         "bunyan": "^1.8.15",
         "cors": "^2.8.5",

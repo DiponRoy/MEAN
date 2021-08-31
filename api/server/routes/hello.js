@@ -1,5 +1,5 @@
 import express from 'express'
-import { authenticate, developer } from '../middlewares/all.js'
+import { authenticate, developer } from 'server/middlewares/all.js'
 
 
 

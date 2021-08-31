@@ -38,7 +38,7 @@ services:
       - web-api-node_modules:/app/node_modules
     ports:
       - '2002:80'
-    env_file: ./api/.env
+    env_file: ./api/server/.env
     
 volumes:
   web-api-node_modules:

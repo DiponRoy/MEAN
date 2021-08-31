@@ -1,0 +1,6 @@
+{
+  "compilerOptions": {
+    "baseUrl": "server", /*./src This is where all your code is*/
+  },
+  "include": ["server"]
+}

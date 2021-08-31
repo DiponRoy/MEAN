@@ -1,3 +1,16 @@
+----------------------------- Need to check ------------------------
+https://stackoverflow.com/questions/31068698/importing-node-modules-from-root-directory-using-es6-and-babel-node
+https://github.com/entwicklerstube/babel-plugin-root-import
+https://medium.com/weekly-webtips/say-good-bye-relative-imports-in-nodejs-projects-65513bcdae6c
+https://www.npmjs.com/package/babel-plugin-resolver
+
+
+https://levelup.gitconnected.com/understand-and-configure-absolute-import-paths-in-javascript-5cde3be2630d
+https://spin.atomicobject.com/2017/10/07/absolute-paths-javascript/
+--------------------------------------------------------------------
+
+
+
 https://scotch.io/tutorials/build-a-restful-api-using-node-and-express-4
 https://www.geeksforgeeks.org/how-to-create-multiple-routes-in-the-same-express-js-server/
 https://www.toptal.com/express-js/nodejs-typescript-rest-api-pt-1
@@ -60,6 +73,9 @@ Access request object from any class
 https://www.npmjs.com/package/continuation-local-storage
 https://stackoverflow.com/a/48063327/2948523
 https://stackoverflow.com/questions/59433960/continuation-local-storage-loses-values-after-await-async-call
+
+base import
+https://www.npmjs.com/package/app-module-path
 ----------
 
 validation:

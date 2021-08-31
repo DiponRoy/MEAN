@@ -1,7 +1,15 @@
 import dotenv from "dotenv"
-import { config } from "process";
 
+
+
+/*
+.env injected from compose file, or use
+// dotenv.config({
+//     path: "server/.env"
+// });
+*/
 dotenv.config();
+
 
 const configs = {
     env: {

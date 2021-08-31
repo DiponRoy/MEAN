@@ -1,3 +1,11 @@
+// import "app-module-path/register";
+// import a from 'app-module-path/cwd';
+// import { addPath } from 'app-module-path';
+// addPath(process.cwd())
+// console.log(process.cwd())
+
+
+
 import express from 'express';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
@@ -49,7 +57,7 @@ const log = bunyan.createLogger({
 	streams: [
 	  {
 		level: 'info',
-		path: './logs/audit/audit.log'  // log ERROR and above to a file
+		path: 'server/logs/audit/audit.log'  // log ERROR and above to a file
 	  }
 	]
 });
@@ -115,4 +123,4 @@ const host = config.server.host;
 const port = config.server.port;
 const env = config.env.current
 app.listen(port, host);
-console.log(`App running on http://${host}:${port} with ${env} environment settings`);
+console.log(`App running on http://${host}:${port} with ${env} environment settings from ${process.cwd()}`);
